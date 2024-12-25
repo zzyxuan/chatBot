@@ -19,3 +19,57 @@ body {
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+/* Markdown 样式 */
+.markdown-body {
+  @apply text-gray-800;
+}
+
+.markdown-body h1 {
+  @apply text-2xl font-bold mt-4 mb-2;
+}
+
+.markdown-body h2 {
+  @apply text-xl font-bold mt-4 mb-2;
+}
+
+.markdown-body h3 {
+  @apply text-lg font-bold mt-3 mb-1;
+}
+
+.markdown-body p {
+  @apply my-2;
+}
+
+.markdown-body ul {
+  @apply list-disc pl-5 my-2;
+}
+
+.markdown-body ol {
+  @apply list-decimal pl-5 my-2;
+}
+
+.markdown-body li {
+  @apply my-1;
+}
+
+.markdown-body pre {
+  @apply my-2 rounded-md;
+}
+
+.markdown-body table {
+  @apply w-full border-collapse my-2;
+}
+
+.markdown-body th,
+.markdown-body td {
+  @apply border border-gray-300 px-3 py-1;
+}
+
+.markdown-body th {
+  @apply bg-gray-100;
+}
+
+.markdown-body blockquote {
+  @apply border-l-4 border-gray-300 pl-4 my-2 text-gray-600;
+}
