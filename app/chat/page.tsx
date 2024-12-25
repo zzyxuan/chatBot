@@ -13,6 +13,14 @@ interface Message {
   content: string
 }
 
+// 添加类型定义
+interface CodeProps {
+  node?: any;
+  inline?: boolean;
+  className?: string;
+  children?: React.ReactNode;
+}
+
 export default function ChatPage() {
   const [messages, setMessages] = useState<Message[]>([])
   const [input, setInput] = useState('')
@@ -58,7 +66,7 @@ export default function ChatPage() {
       console.error('API 调用出错:', error)
       const errorMessage: Message = {
         role: 'assistant',
-        content: '抱歉，服务出现了一些问题，请稍后再试。'
+        content: '抱歉，服务出现了一些问��，请稍后再试。'
       }
       setMessages(prev => [...prev, errorMessage])
     } finally {
@@ -111,8 +119,7 @@ export default function ChatPage() {
                           remarkPlugins={[remarkGfm]}
                           rehypePlugins={[rehypeRaw, rehypeSanitize]}
                           components={{
-                            // 自定义代码块样式
-                            code({ node, inline, className, children, ...props }) {
+                            code: ({ node, inline, className, children, ...props }: CodeProps) => {
                               return (
                                 <code
                                   className={`${className} ${
@@ -125,8 +132,7 @@ export default function ChatPage() {
                                 </code>
                               )
                             },
-                            // 自定义链接样式
-                            a({ node, children, ...props }) {
+                            a: ({ node, children, ...props }) => {
                               return (
                                 <a
                                   className="text-blue-600 hover:underline"
